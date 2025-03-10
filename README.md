@@ -1,61 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Question ❤</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #ffe4e1;
-            padding: 50px;
-        }
-        h1 {
-            color: #d63384;
-        }
-        p {
-            font-size: 20px;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        #yesBtn {
-            background-color: #28a745;
-            color: white;
-        }
-        #noBtn {
-            background-color: #dc3545;
-            color: white;
-            position: absolute;
-        }
-    </style>
-</head>
-<body>
-    <h1>I Love You! ❤</h1>
-    <h2>Do you love me ? 💍</h2>
-    <p>You are the best thing that ever happened to me!</p>
+<script>
+    const text = [
+        "Initializing system...",
+        "Checking user compatibility...",
+        "Analyzing emotions...",
+        "Processing love data...",
+        "User detected: My Love ❤",
+        "Executing final command...",
+        "Will you marry me? 💍❤"
+    ];
 
-    <div class="buttons">
-        <button id="yesBtn" onclick="alert('Yay! I knew you’d say YES! ❤')">Yes</button>
-        <button id="noBtn" onmouseover="moveButton()">No</button>
-    </div>
-
-    <script>
-        function moveButton() {
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 50);
-            document.getElementById('noBtn').style.left = ${x}px;
-            document.getElementById('noBtn').style.top = ${y}px;
+    let index = 0;
+    function typeText() {
+        if (index < text.length) {
+            document.getElementById("output").innerHTML += text[index] + "\n";
+            index++;
+            setTimeout(typeText, 1000);
+        } else {
+            document.getElementById("yesBtn").style.display = "block";
         }
-    </script>
-</body>
-</html>
+    }
+
+    function showGif() {
+        document.body.innerHTML = `
+            <div style="text-align: center; margin-top: 50px;">
+                <h1 style="color: limegreen; font-family: 'Courier New', monospace;">
+                    Yay! You said YES! ❤
+                </h1>
+                <img src="https://media.giphy.com/media/3oz8xKaR836UJOYeOc/giphy.gif" 
+                     alt="Happy GIF" 
+                     style="width: 50%; max-width: 400px; border-radius: 10px;">
+            </div>`;
+    }
+
+    document.getElementById("yesBtn").addEventListener("click", showGif);
+
+    typeText();
+</script>
